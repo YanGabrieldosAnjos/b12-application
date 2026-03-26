@@ -1,0 +1,25 @@
+name: Submit B12 Application
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Submit application
+        run: python submit.py
+        env:
+          B12_SIGNING_SECRET: ${{ secrets.B12_SIGNING_SECRET }}
+          B12_NAME: ${{ secrets.B12_NAME }}
+          B12_EMAIL: ${{ secrets.B12_EMAIL }}
+          B12_RESUME_LINK: ${{ secrets.B12_RESUME_LINK }}
