@@ -9,6 +9,7 @@ on:
 jobs:
   submit:
     runs-on: ubuntu-latest
+    environment: B12_SECRETS
     steps:
       - uses: actions/checkout@v4
 
